@@ -1,1 +1,0 @@
-![On Prem RAG Stack](on_prem_rag_stack.png)
