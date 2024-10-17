@@ -11,11 +11,6 @@ RUN poetry config virtualenvs.create false
 # Set the working directory to /code inside the container
 WORKDIR /code
 
-############
-
-############
-
-
 # Copy the essential project files (pyproject.toml, README.md, and poetry.lock if present) into the container
 COPY ./pyproject.toml ./README.md ./poetry.lock* ./
 
