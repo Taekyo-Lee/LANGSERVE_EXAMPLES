@@ -1,0 +1,30 @@
+# Root Project Definition
+# 'app/' directory is included as a package
+[tool.poetry]
+name = "on_prem_rag_docker"
+version = "0.1.0"
+description = ""
+authors = ["Jet Taekyo Lee <jetleee.1888@gmail.com>"]
+readme = "README.md"
+packages = [
+    { include = "app" },
+]
+
+# Shared Production dependences all across packages
+# After pydantic are sub packages. 'develop=true' means changes to this package will be reflected without needing to reinstall.
+# sub package's name must match that in the sub package's pyproject.toml file
+[tool.poetry.dependencies]
+python = "^3.11"
+uvicorn = "^0.23.2"
+langserve = {extras = ["server"], version = "^0.3.0"}
+pydantic = "^2.9.2"
+on_prem_rag = {path = "packages/opensource_rag", develop = true}
+
+# Development dependencies (skipped if poetry install --no-dev)
+[tool.poetry.group.dev.dependencies]
+langchain-cli = "^0.0.31"
+
+# poetry-core is used as the build backend, which is typical for Poetry-managed projects.
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

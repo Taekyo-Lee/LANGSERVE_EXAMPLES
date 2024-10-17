@@ -1,0 +1,43 @@
+# Sub Project Definition
+[tool.poetry]
+name = "on_prem_rag"
+version = "0.0.1"
+description = "RAG with deepseek-llm-7b-chat(llm) and mxbai-embed-large(embedding)"
+authors = ["Jet Taekyo Lee <jetleee.1888@gmail.com>"]
+readme = "README.md"
+
+
+# Production Dependences Specific to This Sub Project
+[tool.poetry.dependencies]
+python = "^3.11"
+langchain-core = "^0.3.10"
+langchain-community = "^0.3.1"
+langchain-ollama = "^0.2.0"  
+langchain-qdrant = "^0.1.4"
+qdrant-client = "^1.11.3"
+openai = "^1.50.2"
+wikipedia = "^1.4.0"
+
+# Development dependencies Specific to This Sub Project (skipped if poetry install --no-dev)
+[tool.poetry.group.dev.dependencies]
+langchain-cli = "^0.0.31"
+fastapi = ">=0.104.0,<1"
+sse-starlette = "^1.6.5"
+
+
+# LangServe-Specific. export_module==from, export_attr=import 
+[tool.langserve]
+export_module = "packages.opensource_rag.chain"
+export_attr = "rag_chain"
+
+
+[tool.templates-hub]
+use-case = "chatbot"
+author = "LangChain"
+integrations = ["OpenAI"]
+tags = ["getting-started"]
+
+# Build system to use
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"

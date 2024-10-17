@@ -1,0 +1,4 @@
+*env.list*
+*.env*
+*__pycache__*
+*langchain_cache*
